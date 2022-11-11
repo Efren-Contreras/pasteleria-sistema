@@ -1,9 +1,9 @@
-
+import  Login  from "./componentes/rh/login";
 
 function App() {
   return (
     <div className="App">
-      hola
+      <Login></Login>
     </div>
   );
 }
