@@ -1,8 +1,9 @@
 
+
 function App() {
   return (
     <div className="App">
-      inicio
+      hola
     </div>
   );
 }
