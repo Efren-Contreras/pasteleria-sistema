@@ -7,9 +7,11 @@ import app from "./credenciales";
 /*para hacer uso de modulos de firebase */
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
+/**obtiene el estado de la autenticacion */
 const auth = getAuth(app);
 
 function App() {
+  /**Verifica si hay sesion iniciada */
   const [usuarioGlobal, setUsuarioGlobal] = useState(null);
 
   onAuthStateChanged(auth, (usuarioFirebase) => {
@@ -25,6 +27,7 @@ function App() {
 
 
   return (
+    /**dependiendo si hay sesion iniciada o no redirige al inicio o login */
     <>
       {usuarioGlobal ? (
         <Home correoUsuario={usuarioGlobal.email} />

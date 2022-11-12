@@ -3,7 +3,10 @@ import React, { useState } from "react";
 /*Importar las etiquetas html a usar */
 import { Stack, Container, Form, Button } from "react-bootstrap";
 
+/**credenciales para entrar a firebase */
 import app from "../../credenciales";
+
+/**metodos de firebase para la utenticacion */
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -11,19 +14,33 @@ import {
   signInWithRedirect,
   GoogleAuthProvider,
 } from "firebase/auth";
+
+/**obtiene el estado de la autenticacion 
+ * 
+*/
 const auth = getAuth(app);
+
+/**eliminar */
 const googleProvider = new GoogleAuthProvider();
 
 
 //crear componente
 const Login = () => {
+
+  /**estado del login, creo no es necesario
+   * analizar
+   */
   const [estaRegistrandose, setEstaRegistrandose] = useState(false);
 
+  /**Analiza lo recibido del formulario */
   async function submitHandler(e) {
     e.preventDefault();
+
+    /**Obtiene los datos del formulario y los guarda en variables */
     const correo = e.target.formBasicEmail.value;
     const contra = e.target.formBasicPassword.value;
 
+    /**Analizar y modificar para solo poder iniciar sesion */
     if (estaRegistrandose) {
       //si se registra
       const usuario = await createUserWithEmailAndPassword(
