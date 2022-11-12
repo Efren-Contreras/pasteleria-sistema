@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 /*Importar las etiquetas html a usar */
-import { Stack, Container, Form, Button } from "react-bootstrap";
+import { Stack, Container, Form, Button,Alert } from "react-bootstrap";
 
 /**credenciales para entrar a firebase */
 import app from "../../credenciales";
@@ -27,6 +27,7 @@ const googleProvider = new GoogleAuthProvider();
 //crear componente
 const Login = () => {
 
+  const [Error, setError] = useState('');
   /**estado del login, creo no es necesario
    * analizar
    */
@@ -43,20 +44,33 @@ const Login = () => {
     /**Analizar y modificar para solo poder iniciar sesion */
     if (estaRegistrandose) {
       //si se registra
-      const usuario = await createUserWithEmailAndPassword(
-        auth,
-        correo,
-        contra
-      );
+      try{
+        const usuario = await createUserWithEmailAndPassword(
+          auth,
+          correo,
+          contra
+        );
+      }catch (error){
+        setError(error.message)
+        console.log(error.message)
+      }
+      
     } else {
       // si está iniciando sesión
-      signInWithEmailAndPassword(auth, correo, contra);
+      try {
+        await signInWithEmailAndPassword(auth, correo, contra);  
+      } catch (error) {
+        setError(error.message)
+        console.log(error.message)
+      }
+      
     }
   }
 
   return (
     <Container>
       <Stack gap={3}>
+        {Error&&<Alert variant="danger">{Error}</Alert>}
         <h1>{estaRegistrandose ? "Regístrate" : "inicia sesión"}</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
