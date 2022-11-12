@@ -9,10 +9,7 @@ import app from "../../credenciales";
 /**metodos de firebase para la utenticacion */
 import {
   getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithRedirect,
-  GoogleAuthProvider,
+  signInWithEmailAndPassword
 } from "firebase/auth";
 
 /**obtiene el estado de la autenticacion 
@@ -20,18 +17,10 @@ import {
 */
 const auth = getAuth(app);
 
-/**eliminar */
-const googleProvider = new GoogleAuthProvider();
-
-
 //crear componente
 const Login = () => {
-
+  /** Guardad los errores*/
   const [Error, setError] = useState('');
-  /**estado del login, creo no es necesario
-   * analizar
-   */
-  const [estaRegistrandose, setEstaRegistrandose] = useState(false);
 
   /**Analiza lo recibido del formulario */
   async function submitHandler(e) {
@@ -42,20 +31,20 @@ const Login = () => {
     const contra = e.target.formBasicPassword.value;
 
     /**Analizar y modificar para solo poder iniciar sesion */
-    if (estaRegistrandose) {
-      //si se registra
-      try{
-        const usuario = await createUserWithEmailAndPassword(
-          auth,
-          correo,
-          contra
-        );
-      }catch (error){
-        setError(error.message)
-        console.log(error.message)
-      }
+    
+      // //si se registra
+      // try{
+      //   await createUserWithEmailAndPassword(
+      //     auth,
+      //     correo,
+      //     contra
+      //   );
+      // }catch (error){
+      //   setError(error.message)
+      //   console.log(error.message)
+      // }
       
-    } else {
+    
       // si está iniciando sesión
       try {
         await signInWithEmailAndPassword(auth, correo, contra);  
@@ -64,14 +53,14 @@ const Login = () => {
         console.log(error.message)
       }
       
-    }
+    
   }
 
   return (
     <Container>
       <Stack gap={3}>
         {Error&&<Alert variant="danger">{Error}</Alert>}
-        <h1>{estaRegistrandose ? "Regístrate" : "inicia sesión"}</h1>
+        <h1>"inicia sesión"</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -84,28 +73,10 @@ const Login = () => {
           </Form.Group>
 
           <Button variant="dark" type="submit">
-            {estaRegistrandose ? "Regístrate" : "inicia sesión"}
+            "inicia sesión"
           </Button>
         </Form>
 
-        <Button
-          variant="primary"
-          type="submit"
-          style={{ width: "300px" }}
-          onClick={() => signInWithRedirect(auth, googleProvider)}
-        >
-          Acceder con Google
-        </Button>
-
-        <Button
-          style={{ width: "300px" }}
-          variant="secondary"
-          onClick={() => setEstaRegistrandose(!estaRegistrandose)}
-        >
-          {estaRegistrandose
-            ? "¿Ya tienes cuenta? Inicia sesión"
-            : "¿No tienes cuenta? Regístrate"}
-        </Button>
       </Stack>
     </Container>
   );
