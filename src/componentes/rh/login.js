@@ -1,33 +1,80 @@
-import React from "react";
+import React, { useState } from "react";
 
 /*Importar las etiquetas html a usar */
 import { Stack, Container, Form, Button } from "react-bootstrap";
 
+import app from "../../credenciales";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithRedirect,
+  GoogleAuthProvider,
+} from "firebase/auth";
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+
+
 //crear componente
 const Login = () => {
+  const [estaRegistrandose, setEstaRegistrandose] = useState(false);
+
+  async function submitHandler(e) {
+    e.preventDefault();
+    const correo = e.target.formBasicEmail.value;
+    const contra = e.target.formBasicPassword.value;
+
+    if (estaRegistrandose) {
+      //si se registra
+      const usuario = await createUserWithEmailAndPassword(
+        auth,
+        correo,
+        contra
+      );
+    } else {
+      // si está iniciando sesión
+      signInWithEmailAndPassword(auth, correo, contra);
+    }
+  }
+
   return (
     <Container>
       <Stack gap={3}>
-        <Form>
+        <h1>{estaRegistrandose ? "Regístrate" : "inicia sesión"}</h1>
+        <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
+
+          <Button variant="dark" type="submit">
+            {estaRegistrandose ? "Regístrate" : "inicia sesión"}
           </Button>
         </Form>
+
+        <Button
+          variant="primary"
+          type="submit"
+          style={{ width: "300px" }}
+          onClick={() => signInWithRedirect(auth, googleProvider)}
+        >
+          Acceder con Google
+        </Button>
+
+        <Button
+          style={{ width: "300px" }}
+          variant="secondary"
+          onClick={() => setEstaRegistrandose(!estaRegistrandose)}
+        >
+          {estaRegistrandose
+            ? "¿Ya tienes cuenta? Inicia sesión"
+            : "¿No tienes cuenta? Regístrate"}
+        </Button>
       </Stack>
     </Container>
   );
