@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 
 import { getAuth, signOut } from "firebase/auth";
-import app from "../../credenciales";
+import app from "../../firebaseConfig/credenciales";
 
 const auth = getAuth(app);
 
