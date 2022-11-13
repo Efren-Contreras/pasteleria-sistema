@@ -1,12 +1,17 @@
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+//ANDY
+import { getFirestore } from '@firebase/firestore'
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAGu-UaApF4qxFLxFRsof-2y57hCulexPk",
   authDomain: "pasteleria-sistema.firebaseapp.com",
+  databaseURL: "https://pasteleria-sistema-default-rtdb.firebaseio.com",
   projectId: "pasteleria-sistema",
   storageBucket: "pasteleria-sistema.appspot.com",
   messagingSenderId: "505155872343",
@@ -15,3 +20,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+//ANDY
+export const db = getFirestore(app)
