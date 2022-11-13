@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
-import { db } from "../firebaseConfig/credenciales";
+import { db } from "../../firebaseConfig/credenciales";
 
 const Edit = () => {
     const [ NombredelProducto, setNombredelProducto ] = useState('')

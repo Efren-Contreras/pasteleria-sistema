@@ -12,8 +12,8 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 /*para hacer uso de modulos de firebase firestore*/
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
+/**conexion con servicio de autenticacion y base de datos */
 const auth = getAuth(app);
-
 const firestore = getFirestore(app);
 
 function App() {
