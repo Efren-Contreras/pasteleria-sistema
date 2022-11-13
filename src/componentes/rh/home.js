@@ -6,19 +6,26 @@ import { Stack, Container, Form, Button } from "react-bootstrap";
 /*firebase*/ 
 import app from "../../credenciales";
 import { getAuth, signOut } from "firebase/auth";
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+
+/**Importar vistas de cada rol */
+import UserView from "./userView";
+import AdminView from "./adminView";
 
 /**constantes, la primera obtiene el estado de la autenticacion
  * el segundo hace conecxion con la base de datos firebase
  */
 const auth = getAuth(app);
-const firestore = getFirestore(app);
 
 //crear componente
-const Home = () => {
+function Home ({user}) {
   return (
-    /**boton para cerrar sesion */
-    <Button onClick={() => signOut(auth)}>Cerrar sesión </Button>
+    /**html */
+    <Container>
+      <Stack gap={3}>
+        <Button onClick={() => signOut(auth)}>Cerrar sesión </Button>
+        {user.rol === "admin" ? <AdminView/> : <UserView/>}
+      </Stack>
+    </Container>
   );
 }
 
