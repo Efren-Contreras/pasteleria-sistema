@@ -4,7 +4,7 @@ import React from "react";
 import { Stack, Container, Form, Button } from "react-bootstrap";
 
 /*firebase*/ 
-import app from "../../credenciales";
+import app from "../../firebaseConfig/credenciales";
 import { getAuth, signOut } from "firebase/auth";
 
 /**Importar vistas de cada rol */

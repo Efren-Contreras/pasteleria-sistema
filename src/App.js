@@ -5,16 +5,15 @@ import Login from "./componentes/pantallas/login";
 import Home from "./componentes/pantallas/home";
 
 /*importar credenciales para firebase*/
-import app from "./credenciales";
+import app from "./firebaseConfig/credenciales";
 /*para hacer uso de modulos de firebase autenticacion */
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 /*para hacer uso de modulos de firebase firestore*/
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
-/**obtiene el estado de la autenticacion */
 const auth = getAuth(app);
-/**enlaza con servicios de fire store */
+
 const firestore = getFirestore(app);
 
 function App() {

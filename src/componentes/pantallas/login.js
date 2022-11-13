@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Stack, Container, Form, Button,Alert } from "react-bootstrap";
 
 /**credenciales para entrar a firebase */
-import app from "../../credenciales";
+import app from "../../firebaseConfig/credenciales";
 
 /**metodos de firebase para la utenticacion */
 import {

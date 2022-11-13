@@ -1,15 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import './index.css';
 import App from './App';
 
 /**Necesario pára llamar estilos de bootstrap**/ 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+//ANDY
+import 'bootstrap/dist/css/bootstrap.min.css'
+ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
-
