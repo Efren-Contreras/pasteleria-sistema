@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 /**Vistas principales */
-import  Login  from "./componentes/rh/login";
-import Home from "./componentes/rh/home";
+import Login from "./componentes/pantallas/login";
+import Home from "./componentes/pantallas/home";
 
 /*importar credenciales para firebase*/
 import app from "./credenciales";
@@ -62,7 +62,6 @@ function App() {
          * manda el uid de la sesion o algo asi
         */
         setUserWithFirebaseAndRol(usuarioFirebase);
-        console.log(usuarioGlobal);
       }
     } else {
       //código en caso de que no haya sesión iniciada

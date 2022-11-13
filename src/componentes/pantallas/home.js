@@ -8,8 +8,9 @@ import app from "../../credenciales";
 import { getAuth, signOut } from "firebase/auth";
 
 /**Importar vistas de cada rol */
-import UserView from "./userView";
-import AdminView from "./adminView";
+import RhView from "../rh/rhView";
+import AdminView from "../admin/adminView";
+import FinanzasView from "../finanzas/finanzasView";
 
 /**constantes, la primera obtiene el estado de la autenticacion
  * el segundo hace conecxion con la base de datos firebase
@@ -22,10 +23,13 @@ function Home ({user}) {
     /**html */
     <Container>
       <Stack gap={3}>
-        <Button onClick={() => signOut(auth)}>Cerrar sesión </Button>
-        {user.rol === "admin" ? <AdminView/> : <UserView/>}
+        
+        {user.rol === "admin" ? <AdminView/> :
+        user.rol === "finanzas" ? <FinanzasView/> : 
+        user.rol === "rh" ? <RhView/> : "error"}
+
       </Stack>
-    </Container>
+    </Container>    
   );
 }
 
