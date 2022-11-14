@@ -24,9 +24,9 @@ function Home ({user}) {
     <Container>
       <Stack gap={3}>
         
-        {user.rol === "admin" ? <AdminView/> :
-        user.rol === "finanzas" ? <FinanzasView/> : 
-        user.rol === "rh" ? <RhView/> : "error"}
+        {user.rol === "admin" ? <AdminView user={{user}}/> :
+        user.rol === "finanzas" ? <FinanzasView user={{user}}/> : 
+        user.rol === "rh" ? <RhView user={{user}}/> : "error"}
 
       </Stack>
     </Container>    

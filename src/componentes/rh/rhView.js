@@ -1,11 +1,14 @@
 import React from "react";
-import Menu from "../recursos/menuAdmin.js";
+import Menu from "../recursos/menuRh.js";
 
-function RhView() {
+import Perfil from "../recursos/perfil";
+
+function RhView(user) {
+  const uid = user.user.user;
   return( 
     <>
       <Menu/>
-        hola rh
+      <Perfil user={{uid}}/>
     </>
   );
 }

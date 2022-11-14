@@ -48,7 +48,6 @@ function App() {
        * guarda en la constante de usurioGlobal
        */
       setUsuarioGlobal(userData);
-      console.log("userData fianl", userData);
     });
   }
 
