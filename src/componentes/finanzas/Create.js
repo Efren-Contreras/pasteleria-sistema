@@ -14,7 +14,7 @@ const [ PreciodelProducto, setPreciodelProducto ] = useState()
   const store = async (e) => {
     e.preventDefault()
     await addDoc( gananciasCollection, { NombredelProducto: NombredelProducto, FechadeVenta: FechadeVenta, CuantoseGano: CuantoseGano, CuantosePerdio: CuantosePerdio, PreciodelProducto: PreciodelProducto } )
-    navigate('/')
+    navigate('/verFinanzas')
     //console.log(e.target[0].value)
   }
 
