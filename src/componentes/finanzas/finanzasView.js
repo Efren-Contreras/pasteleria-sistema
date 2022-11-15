@@ -14,11 +14,11 @@ function FinanzasView(user) {
     
     <BrowserRouter>
       <Menu></Menu>
-      <Perfil user={{uid}}/>
       <Routes>
-        <Route path='/' element={ <Show /> } />
-        <Route path='/create' element={ <Create /> } />
+        <Route path='/verFinanzas' element={ <Show /> } />
+        <Route path='/createFinanzas' element={ <Create /> } />
         <Route path='/edit/:id' element={ <Edit /> } />
+        <Route path='/perfil' element={ <Perfil user={{uid}}/>} />
       </Routes>
      </BrowserRouter> 
   );
