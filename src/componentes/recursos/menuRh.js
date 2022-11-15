@@ -11,6 +11,7 @@ function MenuRh() {
   return (
     <>
       <Link to={"/perfil"}>perfil</Link>
+      <Link to={"/recContr"}>recuperar Contraseña</Link>
       <Button onClick={() => signOut(auth)}>Cerrar sesión </Button>
     </>
     );
