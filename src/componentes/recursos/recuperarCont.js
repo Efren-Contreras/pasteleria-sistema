@@ -30,7 +30,7 @@ const RecuperarCont = () => {
     const correo = e.target.formBasicEmail.value;
 
       try {
-        await sendPasswordResetEmail(auth, correo);  
+        await sendPasswordResetEmail(auth, correo).then(alert("Correo enviado, sigue las instrucciones"));  
       } catch (error) {
         setError(error.message)
       }
