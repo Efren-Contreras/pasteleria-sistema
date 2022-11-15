@@ -13,6 +13,8 @@ function MenuFinanzas() {
     <>
     <Link to={"/createFinanzas"}>Crear Finanzas</Link>
     <Link to={"/verFinanzas"}>Ver Finanzas</Link>
+    <Link to={"/createGastos"}>Crear Gastos</Link>
+    <Link to={"/verGastos"}>Ver Gastos</Link>
     <Link to={"/perfil"}>perfil</Link>
 
     <Button onClick={() => signOut(auth)}>Cerrar sesión </Button>

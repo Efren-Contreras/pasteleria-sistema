@@ -18,7 +18,7 @@ const Edit = () => {
         const ganancias = doc(db, "ganancias", id)
         const data = {NombredelProducto: NombredelProducto, FechadeVenta: FechadeVenta, CuantoseGano: CuantoseGano, CuantosePerdio: CuantosePerdio, PreciodelProducto: PreciodelProducto}
         await updateDoc(ganancias, data)
-        navigate('/')
+        navigate('/verFinanzas')
     }
 
     const getgananciatById = async (id) => {
