@@ -32,7 +32,7 @@ function Perfil(user) {
     return( 
     <>
      perfil
-     <h1>{id}</h1>
+
      <h1>{email}</h1>
      <h1>{Nombre}</h1>
     </>
